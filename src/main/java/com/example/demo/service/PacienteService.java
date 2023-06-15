@@ -31,7 +31,7 @@ public class PacienteService {
         return pacienteRepository.findById(id).orElse(null);
     }
 
-    public void modifiy(Long id, String nombre, String apellido, Domicilio domicilio, String dni, Date fechaAlta){
+    public void modifiy(Long id, String nombre, String apellido, String dni, Date fechaAlta){
         Paciente paciente = pacienteRepository.findById(id).orElse(null);
 
         if (paciente != null && domicilio != null){

@@ -16,7 +16,7 @@ public class Domicilio {
     private String localidad;
     private String provincia;
 
-    @OneToMany(mappedBy = "domicilio")
+    @OneToOne(mappedBy = "domicilio")
     private Set<Paciente> pacientes = new HashSet<>();
 
 }

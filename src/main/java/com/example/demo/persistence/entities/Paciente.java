@@ -17,7 +17,7 @@ public class Paciente {
     private String apellido;
     private String dni;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "domicilio_id", nullable = false)
     private Domicilio domicilio;
 
