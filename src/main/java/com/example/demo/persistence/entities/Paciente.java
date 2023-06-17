@@ -18,7 +18,7 @@ public class Paciente {
     private String dni;
 
     @OneToOne
-    @JoinColumn(name = "domicilio_id", nullable = false)
+    @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
     private Domicilio domicilio;
 
     private Date fechaRegistro;
