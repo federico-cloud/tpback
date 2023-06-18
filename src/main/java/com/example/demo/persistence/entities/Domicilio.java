@@ -14,7 +14,4 @@ public class Domicilio {
     private String localidad;
     private String provincia;
 
-    @OneToOne
-    @JoinColumn(name = "paciente_id")
-    private Paciente paciente;
 }
