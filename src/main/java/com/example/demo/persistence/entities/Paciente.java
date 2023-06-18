@@ -16,7 +16,7 @@ public class Paciente {
     private String apellido;
     private String dni;
 
-    @OneToOne( mappedBy = "paciente", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
     private Domicilio domicilio;
 
