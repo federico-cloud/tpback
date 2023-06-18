@@ -8,11 +8,13 @@ import lombok.Data;
 public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column
     private Long id;
     private String calle;
     private String numero;
     private String localidad;
     private String provincia;
+
+    @OneToOne
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 }

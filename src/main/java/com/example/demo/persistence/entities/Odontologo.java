@@ -6,7 +6,6 @@ import lombok.Data;
 @Entity
 @Data
 public class Odontologo {
-    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
