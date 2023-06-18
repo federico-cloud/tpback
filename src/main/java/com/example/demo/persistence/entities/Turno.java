@@ -6,7 +6,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Data
@@ -15,7 +14,7 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToOne(cascade = jakarta.persistence.CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "paciente_id", referencedColumnName = "id", nullable = false)
     private Paciente paciente;
 
@@ -26,5 +25,5 @@ public class Turno {
     private LocalDateTime fechaYHora;
 
 }
-//Hasta aca bien
+
 

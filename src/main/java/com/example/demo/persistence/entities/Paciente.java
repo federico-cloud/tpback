@@ -3,7 +3,8 @@ package com.example.demo.persistence.entities;
 import lombok.Data;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.util.*;
 
 @Entity
 @Data
@@ -20,9 +21,8 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
     private Domicilio domicilio;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
-
-
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Turno> turnos = new ArrayList<>();
 
     private Date fechaRegistro;
 
