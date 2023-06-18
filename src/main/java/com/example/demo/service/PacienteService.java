@@ -38,6 +38,7 @@ public class PacienteService {
             paciente.setApellido(apellido);
             paciente.setDni(dni);
             paciente.setFechaRegistro(fechaAlta);
+            pacienteRepository.save(paciente);
         }
     }
 
