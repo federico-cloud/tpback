@@ -20,6 +20,10 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
     private Domicilio domicilio;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "paciente")
+
+
+
     private Date fechaRegistro;
 
 }
