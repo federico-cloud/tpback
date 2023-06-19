@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.OdontologoDTO;
 import com.example.demo.dto.PacienteDTO;
-import com.example.demo.persistence.entities.Domicilio;
 import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.service.PacienteService;
 import com.example.demo.util.Util;
@@ -46,7 +45,6 @@ public class PacienteController {
     public ResponseEntity<PacienteDTO> addPaciente(@RequestBody Paciente paciente){
         ResponseEntity<OdontologoDTO> response = null;
         ObjectMapper mapper = new ObjectMapper();
-        Domicilio domicilio = paciente.getDomicilio();
 
         paciente.setFechaRegistro(Util.utilDateToSqlDate(Util.dateToTimestamp(new Date())));
 
