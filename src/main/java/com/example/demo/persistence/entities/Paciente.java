@@ -21,8 +21,9 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id", nullable = false)
     private Domicilio domicilio;
 
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Turno> turnos = new ArrayList<>();
+    @OneToMany(mappedBy = "paciente")
+    @Column(name = "turno_id")
+    private Set<Turno> turnos = new HashSet<>();
 
     private Date fechaRegistro;
 

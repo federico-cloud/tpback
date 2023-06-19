@@ -1,11 +1,9 @@
 package com.example.demo.persistence.entities;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
@@ -18,11 +16,11 @@ public class Turno {
     @JoinColumn(name = "paciente_id", referencedColumnName = "id", nullable = false)
     private Paciente paciente;
 
-    @OneToOne(cascade = jakarta.persistence.CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "odontologo_id", referencedColumnName = "id", nullable = false)
     private Odontologo odontologo;
 
-    private LocalDateTime fechaYHora;
+    private Date fechaYHora;
 
 }
 
