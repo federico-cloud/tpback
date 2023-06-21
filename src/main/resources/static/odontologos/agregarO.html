@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Clinica</title>
+    <script src="/static/js/post-Odontolog.js"></script>
+    <link rel="stylesheet" href="/static/estilos/styles.css">
+</head>
+<body class="bodyRegular">
+
+    <div class="tituloYFoto bienve">
+    <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+    <img src="/static/img/diente.png" alt="diente clinica odontologica" class="diente">
+    </div>
+
+    <div class="bienvenida">
+        <h2>ODONTOLOGOS</h2>
+        <img src="/static/img/dentista.png" alt="" class="dentistaIcon">
+    </div>
+    
+    <div class="ingreso acciones">
+        <div class="ingreso acciones">
+            <h3>Agregar odntologo</h3>
+            <form class="loginRegistry" id="add_new_odontologo" autocomplete="off">
+
+                <div>
+                    <label for="nombre">Nombre</label><input type="text" id="nombre">
+                </div>
+                <div>
+                    <label for="apellido">Apellido</label><input type="text" id="apellido">
+                </div>
+                <div>
+                    <label for="matricula">Matricula</label><input type="text" id="matricula">
+                </div>
+                <div id="response" style="margin-top:10px"></div>
+                <button class="botonSubmit">
+                    <span class="contenidoBoton">Agregar</span>
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

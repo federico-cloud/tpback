@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Clinica</title>
+    <script src="/static/js/post-Odontolog.js"></script>
+    <link rel="stylesheet" href="/static/estilos/styles.css">
+</head>
+<body class="bodyRegular">
+
+    <div class="tituloYFoto bienve">
+    <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+    <img src="/static/img/diente.png" alt="diente clinica odontologica" class="diente">
+    </div>
+
+    <div class="bienvenida">
+        <h2>AGREGAR TURNO</h2>
+    </div>
+    
+    <div class="ingreso acciones">
+        <div class="ingreso">
+            
+            <form class="loginRegistry" id="add_new_odontologo" autocomplete="off">
+
+                <div>
+                    <label for="idPaciente">Id Paciente</label><input type="number" id="idPaciente">
+                </div>
+                <div>
+                    <label for="idOdontologo">Id Odontologo</label><input type="number" id="idOdontologo">
+                </div>
+                <div>
+                    <label for="fechaYHora">Fecha y hora</label><input type="datetime-local" id="fechaYHora">
+                </div>
+                <div id="response" style="margin-top:10px"></div>
+                <button class="botonSubmit">
+                    <span class="contenidoBoton">Agregar</span>
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

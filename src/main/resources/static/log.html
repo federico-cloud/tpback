@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Clinica</title>
+    <link rel="stylesheet" href="/estilos/styles.css">
+</head>
+<body class="bodyLogin">
+
+    <div class="tituloYFoto">
+    <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+    <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
+    </div>
+    
+    <div class="ingreso">
+        <h2>Ingresa con tu cuenta</h2>
+
+        <form class="loginRegistry" action="" method="POST" autocomplete="off">
+
+            <div>
+                <label for="email">Email</label><input type="email" id="email">
+            </div>
+            <div>
+                <label for="password">Contraseña</label><input type="password" id="password">
+            </div>
+            <div>
+                <label>
+                ¿Eres administrador?
+                  Si <input type="checkbox" name="adminCheckbox"> 
+                </label>
+            </div>
+            <a href="http://localhost:8080/bienvenido.html">
+            <button class="botonSubmit">
+                <span class="contenidoBoton">Ingresar </span>
+            </button>
+            </a>
+        </form>
+    </div>
+</body>
+</html>
