@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Clinica</title>
-    <link rel="stylesheet" href="/static/estilos/styles.css">
+    <link rel="stylesheet" href="/estilos/styles.css">
+    <script src="/js/getAllOdontologo.js"></script>
 </head>
-<body class="bodyRegular">
+<body class="bodyRegular bodyTabla">
 
     <div class="tituloYFoto bienve">
     <h1>CLINICA ODONTOLOGICA BACKEND</h1>
-    <img src="/static/img/diente.png" alt="diente clinica odontologica" class="diente">
+    <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
     </div>
 
     <div class="bienvenida">
@@ -21,22 +22,20 @@
         <button id="listar" class="botonSubmit acccion">
             <span class="contenidoBoton">Listar todos</span>
         </button>
-
         <table id="odontologos-table">
             <thead>
                 <tr>
-                <th id="id">ID</th>
+                <th id="id">Id</th>
                 <th id="nombre">Nombre</th>
                 <th id="apellido">Apellido</th>
                 <th id="matricula">Matrícula</th>
                 <th id="turnos">Lista de Turnos</th>
                 </tr>
             </thead>
-        <tbody>
-            <!-- Las filas se agregarán dinámicamente a través de JavaScript -->
-        </tbody>
+            <tbody>
+                <!-- Las filas se agregarán dinámicamente a través de JavaScript -->
+            </tbody>
         </table>
-
     </div>
 </body>
 </html>

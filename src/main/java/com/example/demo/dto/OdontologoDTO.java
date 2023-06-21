@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OdontologoDTO {
+
     //Attributes
     private String nombre;
     private String apellido;
     private String matricula;
-
 
 }

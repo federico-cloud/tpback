@@ -93,7 +93,7 @@ background-color: rgba(117, 117, 117, 0);
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: -1px;
     transform: scaleX(0);
     transform-origin: 0 50%;
     width: 100%;
@@ -101,7 +101,7 @@ background-color: rgba(117, 117, 117, 0);
     border-radius: inherit;
     background: linear-gradient(
       82.3deg,
-      rgb(41, 42, 104) 10.8%,
+      rgb(12, 12, 12) 10.8%,
       rgb(53, 53, 53) 94.3%
     );
     transition: all 0.475s;
@@ -126,11 +126,13 @@ background-color: rgba(117, 117, 117, 0);
     align-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: 100vh;
+    width: 100vw;
+    height:fit-content;
     margin: 0;
     font-family: "Montserrat", sans-serif;
     background: linear-gradient(229.67deg, rgba(205, 237, 255, 0.8) 33.86%, rgba(156, 219, 255, 1) 77.18%);
     backdrop-filter: blur(2px);
+
 }
 .bienve {
     font-size: smaller;
@@ -144,7 +146,6 @@ background-color: rgba(117, 117, 117, 0);
 }
 
 .acciones {
-    height: 50vh;
     margin-top: 1%;
     flex-direction: column;
     align-content: space-around;
@@ -153,10 +154,12 @@ background-color: rgba(117, 117, 117, 0);
 
 .acciones button {
     width: 300px;
+    margin: 15px 0;
 }
 
 .acciones h3 {
     font-size: 20px;
+    margin-top: 20px;
 }
 
 .dentistaIcon {

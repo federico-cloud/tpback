@@ -23,9 +23,9 @@ window.addEventListener('load', function () {
             odontologosTable.appendChild(row);
             });
         })
+
         .catch(error => {
             console.error('Error en la solicitud:', error);
         })
     });
-
 });
