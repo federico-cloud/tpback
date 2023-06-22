@@ -10,6 +10,7 @@ import java.util.Date;
 public class PacienteDTO {
 
     //Attributes
+    private Long id;
     private String nombre;
     private String apellido;
     private String dni;

@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoDTO {
+    private Long id;
     private Paciente paciente;
     private Odontologo odontologo;
     private Date fechaYHora;
