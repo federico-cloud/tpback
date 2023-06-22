@@ -8,6 +8,7 @@ import lombok.Data;
 public class OdontologoDTO {
 
     //Attributes
+    private Long id;
     private String nombre;
     private String apellido;
     private String matricula;
