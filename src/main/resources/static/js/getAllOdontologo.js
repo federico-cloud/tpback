@@ -1,31 +1,35 @@
 window.addEventListener('load', function () {
 
     const botonListar = document.querySelector('#listar');
+    const odontologosTable = document.querySelector('table#odontologos-table tbody');
 
-    botonListar.addEventListener('click', function (event) {
+    const obtenerOdontologos = async() => {
 
-        fetch('/odontologos/getAll')
-        .then(response => response.json())
-        .then(data => {
-            const odontologosTable = document.querySelector('#odontologos-table tbody');
+        const resp = await fetch('/odontologos/getAll');
+        const data = await resp.json();
 
-            // Vaciar la tabla antes de llenarla nuevamente
-            odontologosTable.innerHTML = '';
+        return data;
 
-            // Iterar sobre los datos recibidos y agregar las filas a la tabla
-            data.forEach(odontologo => {
+    }
+
+    botonListar.addEventListener('click', async(event) => {
+
+        const data = await obtenerOdontologos();
+        // Vaciar la tabla antes de llenarla nuevamente
+        odontologosTable.innerHTML = '';
+
+        // Iterar sobre los datos recibidos y agregar las filas a la tabla
+        data.forEach(odontologo => {
             const row = document.createElement('tr');
-            console.log(data);
-            row.innerHTML = `<td>${odontologo.id}</td>
-                            <td>${odontologo.nombre}</td>
-                            <td>${odontologo.apellido}</td>
-                            <td>${odontologo.matricula}</td>`;
-            odontologosTable.appendChild(row);
-            });
-        })
 
-        .catch(error => {
-            console.error('Error en la solicitud:', error);
-        })
-    });
+            row.innerHTML = `
+                <td>${odontologo.id}</td>
+                <td>${odontologo.nombre}</td>
+                <td>${odontologo.apellido}</td>
+                <td>${odontologo.matricula}</td>
+            `
+
+            odontologosTable.appendChild(row);
+        });
+    })
 });
