@@ -8,39 +8,42 @@
 </head>
 <body class="bodyRegular">
 
-<div class="tituloYFoto bienve">
-    <h1>CLINICA ODONTOLOGICA BACKEND</h1>
-    <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
-</div>
+    <div class="tituloYFoto">
+        <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+        <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
+    </div>
 
-<div class="bienvenida">
-    <h2>ODONTOLOGOS</h2>
-    <img src="/img/dentista.png" alt="" class="dentistaIcon">
-</div>
+    <div class="bienvenida">
+        <h2>ODONTOLOGOS</h2>
+        <img src="/img/dentista.png" alt="" class="dentistaIcon">
+    </div>
 
-<div class="ingreso acciones">
+    <div class="ingreso acciones">
+        <h3>Modificar odontologo</h3>
+            <form class="loginRegistry" id="modify_odontologo" autocomplete="off">
+                <div>
+                    <label for="id">Id</label>
+                    <input type="number" id="id">
+                </div>
+                <div>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre">
+                </div>
+                <div>
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido">
+                </div>
+                <div>
+                    <label for="matricula">Matricula</label>
+                    <input type="text" id="matricula">
+                </div>
+                <button class="botonSubmit">
+                    <span class="contenidoBoton">Agregar</span>
+                </button>
+            </form>
+    </div>
 
-    <h3>Modificar odontologo</h3>
-        <form class="loginRegistry" id="modify_odontologo" autocomplete="off">
-
-            <div>
-                <label for="id">Id</label><input type="number" id="id">
-            </div>
-            <div>
-                <label for="nombre">Nombre</label><input type="text" id="nombre">
-            </div>
-            <div>
-                <label for="apellido">Apellido</label><input type="text" id="apellido">
-            </div>
-            <div>
-                <label for="matricula">Matricula</label><input type="text" id="matricula">
-            </div>
-            <div id="response" style="margin-top:10px"></div>
-            <button class="botonSubmit">
-                <span class="contenidoBoton">Agregar</span>
-            </button>
-        </form>
-</div>
-<script src="/js/modificarO.js"></script>
+    <script src="/js/modificarO.js"></script>
+    
 </body>
 </html>
