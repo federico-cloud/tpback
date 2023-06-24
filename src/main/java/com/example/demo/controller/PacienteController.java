@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.OdontologoDTO;
 import com.example.demo.dto.PacienteDTO;
+import com.example.demo.persistence.entities.Odontologo;
 import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.service.PacienteService;
 import com.example.demo.util.Util;
@@ -53,6 +54,21 @@ public class PacienteController {
         pacienteDto = mapper.convertValue(pacienteClass, PacienteDTO.class);
 
         return ResponseEntity.ok(pacienteDto);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<PacienteDTO> deletePaciente(@PathVariable Long id){
+        ResponseEntity<PacienteDTO> response = null;
+        ObjectMapper mapper = new ObjectMapper();
+        Paciente paciente = pacienteService.findById(id);
+
+        if (paciente != null) {
+            pacienteService.delete(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
 
