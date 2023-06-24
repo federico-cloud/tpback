@@ -9,9 +9,9 @@
 </head>
 <body class="bodyRegular turnos">
 
-    <div class="tituloYFoto bienve">
-    <h1>CLINICA ODONTOLOGICA BACKEND</h1>
-    <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
+    <div class="tituloYFoto">
+        <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+        <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
     </div>
 
     <div class="bienvenida">
@@ -19,22 +19,24 @@
     </div>
     
     <div class="ingreso acciones">
-            <form class="loginRegistry" id="add_new_odontologo" autocomplete="off">
-
-                <div>
-                    <label for="idPaciente">Id Paciente</label><input type="number" id="idPaciente">
-                </div>
-                <div>
-                    <label for="idOdontologo">Id Odontologo</label><input type="number" id="idOdontologo">
-                </div>
-                <div>
-                    <label for="fechaYHora">Fecha y hora</label><input type="datetime-local" id="fechaYHora">
-                </div>
-                <div id="response" style="margin-top:10px"></div>
-                <button class="botonSubmit">
-                    <span class="contenidoBoton">Agregar</span>
-                </button>
-            </form>
-        </div>
+        <form class="loginRegistry" id="add_new_odontologo" autocomplete="off">
+            <div>
+                <label for="idPaciente">Id Paciente</label>
+                <input type="number" id="idPaciente" min="1">
+            </div>
+            <div>
+                <label for="idOdontologo">Id Odontologo</label>
+                <input type="number" id="idOdontologo" min="1">
+            </div>
+            <div>
+                <label for="fechaYHora">Fecha y hora</label>
+                <input type="datetime-local" id="fechaYHora">
+            </div>
+            <button class="botonSubmit">
+                <span class="contenidoBoton">Agregar</span>
+            </button>
+        </form>
+    </div>
+    
 </body>
 </html>
