@@ -36,9 +36,29 @@ window.addEventListener('load', function () {
         }
 
         const resp = await fetch(url, settings);
+        showAlert(resp.status);
         const data = await resp.json();
 
         return data;
+    }
+
+    const showAlert = (status) => {
+
+        status === 200 ? (
+            Swal.fire({
+                icon: 'success',
+                title: 'El paciente fue generado extiosamente',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        ):(
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error al crear el paciente',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        );
     }
 
     formulario.addEventListener('submit', (event) => {
