@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Clinica</title>
     <link rel="stylesheet" href="/estilos/styles.css">
-    <script src="/js/getAllOdontologo.js"></script>
+    <script src="/js/getAllPaciente.js"></script>
 </head>
 <body class="bodyRegular">
 
@@ -15,7 +15,7 @@
 </div>
 
 <div class="bienvenida">
-    <h2>LISTA DE ODONTOLOGOS</h2>
+    <h2>LISTA DE PACIENTES</h2>
 </div>
 
 <div class="ingreso acciones">
@@ -23,13 +23,14 @@
         <span class="contenidoBoton">Listar todos</span>
     </button>
 
-    <table id="odontologos-table">
+    <table id="pacientes-table">
         <thead>
         <tr>
             <th id="id">Id</th>
             <th id="nombre">Nombre</th>
             <th id="apellido">Apellido</th>
             <th id="dni">Dni</th>
+            <th id="domicilio">Domicilio</th>
         </tr>
         </thead>
         <tbody>
