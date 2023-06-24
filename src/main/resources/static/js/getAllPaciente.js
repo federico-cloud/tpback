@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
     const botonListar = document.querySelector('#listar');
     const pacientesTable = document.querySelector('table#pacientes-table tbody');
 
-    const obtenerOdontologos = async() => {
+    const obtenerPacientes = async() => {
 
         const resp = await fetch('/pacientes/getAll');
         const data = await resp.json();
@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
 
     botonListar.addEventListener('click', async(event) => {
 
-        const data = await obtenerOdontologos();
+        const data = await obtenerPacientes();
         // Vaciar la tabla antes de llenarla nuevamente
         pacientesTable.innerHTML = '';
 
@@ -32,5 +32,4 @@ window.addEventListener('load', function () {
             pacientesTable.appendChild(row);
         });
     })
-
 });

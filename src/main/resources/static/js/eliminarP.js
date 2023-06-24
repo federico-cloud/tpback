@@ -4,25 +4,29 @@ window.addEventListener('load', function () {
 
     formulario.addEventListener('submit', function (event) {
 
+        event.preventDefault();
+
         const formData = {
             id: document.querySelector('#id').value,
         };
 
-        const url = '/odontologos/delete/${id}';
+        const id = formData.id;
+
+        const url = `/pacientes/delete/${id}`;
         const settings = {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData)
-        }
+        };
 
         fetch(url, settings)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     // Si la petición fue exitosa, mostramos un mensaje de éxito
-                    showResponseMessage('success', 'Usuario agregado');
+                    showResponseMessage('success', 'Usuario eliminado');
                     resetUploadForm();
                 } else {
                     // Si hubo un error, mostramos un mensaje de error
