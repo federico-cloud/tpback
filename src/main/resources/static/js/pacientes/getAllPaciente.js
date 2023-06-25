@@ -8,7 +8,6 @@ window.addEventListener('load', function () {
         const resp = await fetch('/pacientes/getAll');
         const data = await resp.json();
 
-        console.log(data);
         return data;
 
     }

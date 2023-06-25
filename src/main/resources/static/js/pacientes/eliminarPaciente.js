@@ -12,16 +12,18 @@ window.addEventListener('load', function () {
         status === 200 ? (
             Swal.fire({
                 icon: 'success',
-                title: 'El paciente fue eliminado exitosamente',
+                title: 'Tarea completada',
+                text: 'El paciente fue eliminado exitosamente',
                 showConfirmButton: false,
                 timer: 2000
             })
         ):(
             Swal.fire({
                 icon: 'error',
-                title: 'Hubo un error al eliminar a el paciente',
+                title: 'ERROR',
+                text: 'Posiblemente el paciente que esta intentando eliminar posee un turno vigente.',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 4000
             })
         );
     }

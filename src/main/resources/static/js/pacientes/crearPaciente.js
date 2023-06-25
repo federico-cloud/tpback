@@ -47,17 +47,19 @@ window.addEventListener('load', function () {
         status === 200 ? (
             Swal.fire({
                 icon: 'success',
-                title: 'El paciente fue generado extiosamente',
+                title: 'Tarea completada',
+                text: 'El paciente fue generado extiosamente',
                 showConfirmButton: false,
-                timer: 1500
-              })
+                timer: 2000
+            })
         ):(
             Swal.fire({
                 icon: 'error',
-                title: 'Hubo un error al crear el paciente',
+                title: 'ERROR',
+                text: 'Hubo un error al crear el paciente',
                 showConfirmButton: false,
-                timer: 1500
-              })
+                timer: 4000
+            })
         );
     }
 
