@@ -47,11 +47,10 @@ window.addEventListener('load', function () {
 
         // Realiza la petición PUT a la API
         const resp = await fetch(url, settings);
-        console.log(resp);
+        showAlert(resp.status);
         const data = await resp.json();
-        console.log(data)
 
-        // return data;
+        return data;
     }
 
     document.getElementById('modify_odontologo').addEventListener('submit', function(event) {
