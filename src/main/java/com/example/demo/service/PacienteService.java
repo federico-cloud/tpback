@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.persistence.entities.Domicilio;
 import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.persistence.repository.IPacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,14 @@ public class PacienteService {
         return pacienteRepository.findById(id).orElse(null);
     }
 
-    public void modifiy(Long id, String nombre, String apellido, String dni, Date fechaAlta){
+    public void modifiy(Long id, String nombre, String apellido, String dni, Domicilio domicilio){
         Paciente paciente = pacienteRepository.findById(id).orElse(null);
 
         if (paciente != null){
             paciente.setNombre(nombre);
             paciente.setApellido(apellido);
             paciente.setDni(dni);
-            paciente.setFechaRegistro(fechaAlta);
+            paciente.setDomicilio(domicilio);
             pacienteRepository.save(paciente);
         }
     }

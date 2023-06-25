@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.OdontologoDTO;
 import com.example.demo.dto.PacienteDTO;
-import com.example.demo.persistence.entities.Odontologo;
 import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.service.PacienteService;
 import com.example.demo.util.Util;
@@ -25,7 +23,7 @@ public class PacienteController {
     @GetMapping("/getAll")
     public ResponseEntity<List<PacienteDTO>> listAll(){
 
-        ResponseEntity<OdontologoDTO> response = null;
+        ResponseEntity<PacienteDTO> response = null;
         ObjectMapper mapper = new ObjectMapper();
         List<Paciente> pacientes = pacienteService.getAll();
         List<PacienteDTO> pacientesDto = new ArrayList<>();
@@ -44,7 +42,7 @@ public class PacienteController {
     }
     @PostMapping("/add")
     public ResponseEntity<PacienteDTO> addPaciente(@RequestBody Paciente paciente){
-        ResponseEntity<OdontologoDTO> response = null;
+        ResponseEntity<PacienteDTO> response = null;
         ObjectMapper mapper = new ObjectMapper();
 
         paciente.setFechaRegistro(Util.utilDateToSqlDate(Util.dateToTimestamp(new Date())));
@@ -69,6 +67,18 @@ public class PacienteController {
             return ResponseEntity.notFound().build();
         }
 
+    }
+
+    @PutMapping("/modify/{id}")
+    public ResponseEntity<PacienteDTO> modify(@PathVariable Long id, @RequestBody PacienteDTO pacienteDTO) {
+        ResponseEntity<PacienteDTO> response = null;
+
+        try {
+            pacienteService.modifiy(id, pacienteDTO.getNombre(), pacienteDTO.getApellido(), pacienteDTO.getDni(),pacienteDTO.getDomicilio());
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
