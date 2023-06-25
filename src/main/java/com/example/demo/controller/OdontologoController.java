@@ -68,14 +68,16 @@ public class OdontologoController {
     }
 
     @PutMapping("/modify/{id}")
-    public ResponseEntity<OdontologoDTO> modifyOdontologo(@PathVariable Long id, @RequestBody OdontologoDTO odontologoDTO) {
+    public ResponseEntity<OdontologoDTO> modifyOdontologo(@PathVariable Long id, @RequestBody Odontologo odontologo) {
         ResponseEntity<OdontologoDTO> response = null;
+        Odontologo odontologoModificar = odontologoService.findById(id);
 
-        try {
-            odontologoService.modifyOdontologo(id, odontologoDTO.getNombre(), odontologoDTO.getApellido(), odontologoDTO.getMatricula());
+        if (odontologoModificar != null){
+            odontologoService.modifyOdontologo(id, odontologo.getNombre(), odontologo.getApellido(), odontologo.getMatricula());
             return ResponseEntity.ok().build();
-        } catch (Exception e) {
+        } else {
             return ResponseEntity.notFound().build();
         }
+
     }
 }

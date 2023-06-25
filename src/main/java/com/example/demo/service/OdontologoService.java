@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OdontologoService{
@@ -32,9 +31,8 @@ public class OdontologoService{
     }
 
     public void modifyOdontologo(Long id, String nombre, String apellido, String matricula) {
-        Optional<Odontologo> optionalOdontologo = odontologoRepository.findById(id);
-        if (optionalOdontologo.isPresent()) {
-            Odontologo odontologo = optionalOdontologo.get();
+        Odontologo odontologo = odontologoRepository.findById(id).orElse(null);
+        if (odontologo != null) {
             odontologo.setNombre(nombre);
             odontologo.setApellido(apellido);
             odontologo.setMatricula(matricula);
