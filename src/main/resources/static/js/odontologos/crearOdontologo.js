@@ -36,16 +36,18 @@ window.addEventListener('load', function () {
         status === 200 ? (
             Swal.fire({
                 icon: 'success',
-                title: 'El odontologo fue generado extiosamente',
+                title: 'Tarea completada',
+                text: 'El odontologo fue generado exitosamente.',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2000
               })
         ):(
             Swal.fire({
                 icon: 'error',
-                title: 'Hubo un error al crear el odontologo',
+                title: 'ERROR',
+                text: 'Hubo un error al generar el nuevo odontologo.',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 4000
               })
         );
     }
