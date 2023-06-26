@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Clinica</title>
+    <link rel="stylesheet" href="/estilos/styles.css">
+</head>
+<body class="bodyRegular bodyTabla">
+    
+    <div class="tituloYFoto">
+        <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+        <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
+    </div>
+    
+    <div class="bienvenida">
+        <h2>LISTA DE TURNOS</h2>
+    </div>
+    
+    <div class="ingreso acciones">
+        <button id="listar" class="botonSubmit acccion">
+            <span class="contenidoBoton">Listar todos</span>
+        </button>
+        <table id="turnos-table">
+            <thead>
+                <tr>
+                    <th id="id">Id</th>
+                    <th id="nombrePaciente">Nombre completo del paciente</th>
+                    <th id="apellidoPaciente">Nombre completo del odontologo</th>
+                    <th id="fechaYHora">Fecha y hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se agregarán dinámicamente a través de JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/turnos/listarTurnos.js"></script>
+    
+</body>
+</html>
