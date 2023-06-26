@@ -84,6 +84,11 @@
   color: #fff;
   border: none;
 }
+
+.botonSubmit:hover{
+  cursor: pointer;
+  box-shadow: 2px 0px 2px var(--negro);
+}
   
 .botonSubmit:hover::before {
   transform: scaleX(1);
@@ -167,32 +172,45 @@
 }
 
 #odontologos-table,
-#pacientes-table{
+#pacientes-table,
+#turnos-table{
   width: 100%;
   border-collapse: collapse;
 }
   
 #odontologos-table th,
-#odontologos-table tr{
+#odontologos-table tr,
+#pacientes-table th,
+#pacientes-table tr,
+#turnos-table th,
+#turnos-table tr{
   padding: 12px;
   text-align: center;
   border: 2px solid var(--negro);
 }
 
-#odontologos-table td{
+#odontologos-table td,
+#pacientes-table td,
+#turnos-table td{
   padding: 12px;
   font-weight: bold;
 }
   
-#odontologos-table th {
+#odontologos-table th,
+#pacientes-table th,
+#turnos-table th{
   background-color: #f2f2f2;
 }
   
-#odontologos-table tbody tr:nth-child(even) {
+#odontologos-table tbody tr:nth-child(even),
+#pacientes-table tbody tr:nth-child(even),
+#turnos-table tbody tr:nth-child(even) {
   background-color: var(--blanco);
 }
 
-#odontologos-table tbody tr:nth-child(odd) {
+#odontologos-table tbody tr:nth-child(odd),
+#pacientes-table tbody tr:nth-child(odd),
+#turnos-table tbody tr:nth-child(odd) {
   background-color: var(--gris);
 }
 
