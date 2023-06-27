@@ -58,8 +58,6 @@ window.addEventListener('load', function () {
             }    
         }
 
-        console.log(formData);
-
         const settings = {
             method: "POST",
             headers: {
@@ -86,7 +84,6 @@ window.addEventListener('load', function () {
         const odontologo = await buscarOdontologoId(idOdontologo);
 
         crearTurno(paciente, odontologo);
-        console.log(paciente, odontologo);
 
     })
 
