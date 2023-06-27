@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Clinica</title>
-    <script src="/js/post-Odontolog.js"></script>
     <link rel="stylesheet" href="/estilos/styles.css">
 </head>
 <body class="bodyRegular turnos">
@@ -19,7 +18,7 @@
     </div>
     
     <div class="ingreso acciones">
-        <form class="loginRegistry" id="add_new_odontologo" autocomplete="off">
+        <form class="loginRegistry" id="add_new_turno" autocomplete="off">
             <div>
                 <label for="idPaciente">Id Paciente</label>
                 <input type="number" id="idPaciente" min="1">
@@ -38,5 +37,8 @@
         </form>
     </div>
     
+    <script src="../js/turnos/crearTurno.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
