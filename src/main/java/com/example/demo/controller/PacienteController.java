@@ -40,6 +40,24 @@ public class PacienteController {
         }
 
     }
+
+    @GetMapping("/search/{id}")
+    public ResponseEntity<PacienteDTO> searchById(@PathVariable Long id){
+
+        ResponseEntity<PacienteDTO> response = null;
+        ObjectMapper mapper = new ObjectMapper();
+        Paciente paciente = pacienteService.findById(id);
+        PacienteDTO pacienteDto = null;
+
+        if (paciente != null){
+            pacienteDto = mapper.convertValue(paciente, PacienteDTO.class);
+            return ResponseEntity.ok(pacienteDto);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
     @PostMapping("/add")
     public ResponseEntity<PacienteDTO> addPaciente(@RequestBody Paciente paciente){
         ResponseEntity<PacienteDTO> response = null;
@@ -73,12 +91,8 @@ public class PacienteController {
     public ResponseEntity<PacienteDTO> modify(@PathVariable Long id, @RequestBody PacienteDTO pacienteDTO) {
         ResponseEntity<PacienteDTO> response = null;
 
-        try {
-            pacienteService.modifiy(id, pacienteDTO.getNombre(), pacienteDTO.getApellido(), pacienteDTO.getDni(),pacienteDTO.getDomicilio());
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+
+        return response;
     }
 
 
