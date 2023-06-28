@@ -2,8 +2,8 @@ package com.example.demo.persistence.entities;
 
 import lombok.Data;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.*;
 
 @Entity
