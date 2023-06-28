@@ -88,11 +88,18 @@ public class PacienteController {
     }
 
     @PutMapping("/modify/{id}")
-    public ResponseEntity<PacienteDTO> modify(@PathVariable Long id, @RequestBody PacienteDTO pacienteDTO) {
+    public ResponseEntity<PacienteDTO> modify(@PathVariable Long id, @RequestBody Paciente paciente) {
         ResponseEntity<PacienteDTO> response = null;
+        Paciente pacienteModificar = pacienteService.findById(id);
+        PacienteDTO pacienteDto = null;
 
-
-        return response;
+        if(pacienteModificar != null){
+            pacienteService.modify(id, paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getDomicilio());
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+        
     }
 
 

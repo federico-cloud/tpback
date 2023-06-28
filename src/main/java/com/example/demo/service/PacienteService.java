@@ -6,7 +6,6 @@ import com.example.demo.persistence.repository.IPacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,7 +30,7 @@ public class PacienteService {
         return pacienteRepository.findById(id).orElse(null);
     }
 
-    public void modifiy(Long id, String nombre, String apellido, String dni, Domicilio domicilio){
+    public void modify(Long id, String nombre, String apellido, String dni, Domicilio domicilio){
         Paciente paciente = pacienteRepository.findById(id).orElse(null);
 
         if (paciente != null){
