@@ -1,5 +1,6 @@
 package com.example.demo.jwt;
 
+import com.example.demo.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,22 +20,22 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private AppUserService userDetailsService;
     @Autowired
     private JwtUtil jwtUtil;
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = httpServletRequest.getHeader("Authorization");
-        String username= null;
+        String email= null;
         String jwt = null;
 
         if(authorizationHeader != null &&  authorizationHeader.startsWith("Bearer")) {
             jwt = authorizationHeader.substring(7);
-            username = jwtUtil.extractUserName(jwt);
+            email = jwtUtil.extractUserName(jwt);
         }
 
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails  = this.userDetailsService.loadUserByUsername(username);
+        if(email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails  = this.userDetailsService.loadUserByUsername(email);
             if(jwtUtil.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken  usernamePasswordAuthenticationToken  = new UsernamePasswordAuthenticationToken(userDetails,
                         null, userDetails.getAuthorities());

@@ -2,6 +2,7 @@ package com.example.demo.jwt;
 
 import com.example.demo.persistence.entities.AppUser;
 import com.example.demo.persistence.entities.AuthenticationResponse;
+import com.example.demo.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +21,7 @@ public class JWTController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private UserDetailsService userDetailsService;
+    private AppUserService userDetailsService;
     @Autowired
     private JwtUtil jwtUtil;
 

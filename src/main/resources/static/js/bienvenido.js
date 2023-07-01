@@ -5,19 +5,15 @@ if (!jwt) {
   location.replace('/');
 }
 
-
 const apiBaseUrl = 'http://localhost:8080';
 
 window.addEventListener('load', function () {
-  // inicializo las librerias
-  AOS.init();
-  dayjs().format()
+
   /* -------------------------------------------------------------------------- */
   /*                             logica de la vista                             */
   /* -------------------------------------------------------------------------- */
   const jwt = localStorage.getItem('jwt')
 
-  const nodoNombreUsuario = document.querySelector('.user-info p');
   const btnCerrar = document.querySelector('#closeApp');
 
   btnCerrar.addEventListener('click', function () {
@@ -45,25 +41,4 @@ window.addEventListener('load', function () {
     //   location.replace('/');
     // }
   })
-
-  /* --------------- funciones que se disparan al iniciar la app -------------- */
-  obtenerNombreUsuario(`${apiBaseUrl}/user`, jwt);
-
-  /* ---------------------- GET: obtener info del usuario --------------------- */
-    function obtenerNombreUsuario(url, token) {
-
-      const configuraciones = {
-        method: 'GET',
-        headers: {
-          authorization: 'Bearer ' + token
-        }
-      }
-
-      fetch(url, configuraciones)
-        .then(respuesta => respuesta.json())
-        .then(data => {
-          console.log(data);
-          nodoNombreUsuario.innerText = data.name;
-        })
-    }
  });

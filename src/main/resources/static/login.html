@@ -1,52 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ----------------------------- estilos CSS ----------------------------- -->
-    <link rel="stylesheet" href="/styles/bienvenido.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- ------------------- libreria de iconos Fontawesome -------------------- -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- ----------------------------- sweet alert ----------------------------- -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- ----------------------------- dayjs ----------------------------- -->
-    <!-- CDN example (unpkg) -->
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-
-
-    <!-- ----------------------------- aos ----------------------------- -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- logica de la página -->
-    <script src="/scripts/bienvenido.js"></script>
-
-    <title>ToDo</title>
+    <title>Login Clinica</title>
+    <link rel="stylesheet" href="/estilos/styles.css">
 </head>
+<body class="bodyLogin">
 
-<body>
-<header>
-    <nav>
-        <a href="#">My ToDo's</a>
-    </nav>
+<div class="tituloYFoto">
+    <h1>CLINICA ODONTOLOGICA BACKEND</h1>
+    <img src="/img/diente.png" alt="diente clinica odontologica" class="diente">
+</div>
 
-    <div class="user-info">
-        <p>username</p>
-        <div class="user-image"></div>
-        <p id="closeApp">Cerrar sesión</p>
-    </div>
-</header>
+<div class="ingreso">
+    <h2>Ingresa con tu cuenta</h2>
 
+    <form class="loginRegistry" autocomplete="off">
 
-Bienvenido!!!
-Aquí podrá ir un formulario o listado
+        <div>
+            <label for="email">Email</label><input type="email" id="email">
+        </div>
+        <div>
+            <label for="password">Contraseña</label><input type="password" id="password">
+        </div>
 
+        <button class="botonSubmit">
+        <span class="contenidoBoton">Ingresar </span>
+        </button>
+
+    </form>
+</div>
+<script src="../js/login-app.js"></script>
 </body>
-
 </html>

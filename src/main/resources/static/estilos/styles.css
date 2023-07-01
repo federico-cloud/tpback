@@ -85,6 +85,10 @@
   border: none;
 }
 
+.closeApp {
+    width: 100px;
+}
+
 .botonSubmit:hover{
   cursor: pointer;
   box-shadow: 2px 0px 2px var(--negro);

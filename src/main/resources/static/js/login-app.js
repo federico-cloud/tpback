@@ -3,7 +3,7 @@ const apiUrl = 'http://localhost:8080/authenticate';
 window.addEventListener('load', function(){
     console.log("Entramos en el EventListener");
 
-    const formulario = document.querySelector('form.loginRegistry');
+    const formulario =  this.document.forms[0];
 
     const inputEmail = this.document.querySelector('#email');
 
