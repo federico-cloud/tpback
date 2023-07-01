@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.security;
 
 import com.example.demo.persistence.entities.AppUser;
 import com.example.demo.persistence.entities.AppUserRole;
