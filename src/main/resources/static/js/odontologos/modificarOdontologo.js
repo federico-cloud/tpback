@@ -1,34 +1,11 @@
-// chequear que exista un usuario loggeado
-const jwt = localStorage.getItem('jwt');
-// si no existe un token, lo sacamos de la vista
-if (!jwt) {
-  location.replace('/');
-}
+import { showAlert } from '../util/showAlert.js';
+import { validarJwt } from '../util/validarJwt.js';
+
+validarJwt();
 
 window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#modify_odontologo');
-
-    const showAlert = (status) => {
-
-        status === 200 ? (
-            Swal.fire({
-                icon: 'success',
-                title: 'Tarea completada',
-                text: 'El odontologo fue modificado exitosamente.',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        ):(
-            Swal.fire({
-                icon: 'error',
-                title: 'ERROR',
-                text: 'Hubo un error al modificar el odontologo.',
-                showConfirmButton: false,
-                timer: 4000
-            })
-        );
-    }
 
     const modificarOdontologo = async(id) => {
 

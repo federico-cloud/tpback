@@ -1,13 +1,10 @@
-// chequear que exista un usuario loggeado
-const jwt = localStorage.getItem('jwt');
-// si no existe un token, lo sacamos de la vista
-if (!jwt) {
-  location.replace('/');
-}
+import { validarJwt } from "./util/validarJwt";
+
+validarJwt();
 
 const apiBaseUrl = 'http://localhost:8080';
 
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
 
   /* -------------------------------------------------------------------------- */
   /*                             logica de la vista                             */
@@ -34,11 +31,5 @@ window.addEventListener('load', function () {
         location.href = '/login.html';
       }
     })
-    // cerra sesion
-    // if (confirm("¿Desea cerrar sesión?")) {
-    //   // limpiamos el storage y redireccionamos
-    //   localStorage.clear();
-    //   location.replace('/');
-    // }
   })
  });

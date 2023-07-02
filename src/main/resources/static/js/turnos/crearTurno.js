@@ -1,36 +1,12 @@
-// chequear que exista un usuario loggeado
-const jwt = localStorage.getItem('jwt');
-// si no existe un token, lo sacamos de la vista
-if (!jwt) {
-  location.replace('/');
-}
+import { showAlert } from '../util/showAlert.js';
+import { validarJwt } from '../util/validarJwt.js';
 
-window.addEventListener('load', function () {
+validarJwt();
+
+window.addEventListener('load', () => {
     
     const formulario = document.querySelector('#add_new_turno');
     const buttonSubmit = document.querySelector("form.loginRegistry button.botonSubmit");
-   
-    
-    const showAlert = (status) => {
-
-        status === 200 ? (
-            Swal.fire({
-                icon: 'success',
-                title: 'Tarea completada',
-                text: 'El Turno fue creado exitosamente.',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        ):(
-            Swal.fire({
-                icon: 'error',
-                title: 'ERROR',
-                text: 'Hubo un error al crear el turno.',
-                showConfirmButton: false,
-                timer: 4000
-            })
-        );
-    }
 
     const buscarPacienteId = async(id) => {
 
