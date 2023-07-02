@@ -1,3 +1,9 @@
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+  location.replace('/');
+}
 window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#delete_odontologo');
