@@ -1,4 +1,4 @@
-package com.example.demo.tests;
+package com.example.demo.integracion;
 
 import com.example.demo.persistence.entities.Odontologo;
 import com.example.demo.util.Jsons;
@@ -14,7 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,9 +35,10 @@ public class IntegracionCrearOdontologoTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(Jsons.asJsonString(odontologo)))
                 .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+                .andExpect(status().isOk()).andReturn();
 
         Assert.assertFalse(response.getResponse().getContentAsString().isEmpty());
     }
+
 
 }
