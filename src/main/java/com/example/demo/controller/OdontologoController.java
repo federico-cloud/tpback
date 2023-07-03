@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.OdontologoDTO;
 import com.example.demo.dto.PacienteDTO;
+import com.example.demo.exceptions.ResourceCouldNotBeAdded;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.persistence.entities.Odontologo;
+import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.service.OdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +24,7 @@ public class OdontologoController {
 
     //Listar todos los odontologos
     @GetMapping("/getAll")
-    public ResponseEntity<List<OdontologoDTO>> listAll(){
-
-        ResponseEntity<OdontologoDTO> response = null;
+    public ResponseEntity<List<OdontologoDTO>> listAll() throws ResourceNotFoundException {
 
         ObjectMapper mapper = new ObjectMapper();
         List<Odontologo> odontologos = odontologoService.listAll();
@@ -33,18 +35,14 @@ public class OdontologoController {
             odontologosDTO.add(odontologoDto);
         }
 
-        if (odontologosDTO.size() != 0){
-            return ResponseEntity.ok(odontologosDTO);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-
+        return ResponseEntity.ok(odontologosDTO);
     }
 
     @GetMapping("/search/{id}")
     public ResponseEntity<OdontologoDTO> searchById(@PathVariable Long id){
 
         ResponseEntity<PacienteDTO> response = null;
+
         ObjectMapper mapper = new ObjectMapper();
         Odontologo odontologo = odontologoService.findById(id);
         OdontologoDTO odontologoDto = null;
@@ -59,8 +57,8 @@ public class OdontologoController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<OdontologoDTO> addOdontologo(@RequestBody Odontologo odontologo){
-        ResponseEntity<OdontologoDTO> response = null;
+    public ResponseEntity<OdontologoDTO> addOdontologo(@RequestBody Odontologo odontologo) throws ResourceCouldNotBeAdded {
+
         ObjectMapper mapper = new ObjectMapper();
         Odontologo odontologoClass = odontologoService.addOdontologo(odontologo);
         OdontologoDTO odontologoDTO = null;
@@ -70,32 +68,21 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<OdontologoDTO> deleteOdontologo(@PathVariable Long id){
-        ResponseEntity<OdontologoDTO> response = null;
-        ObjectMapper mapper = new ObjectMapper();
-        Odontologo odontologo = odontologoService.findById(id);
-//        OdontologoDTO odontologoDTO = null;
+    public ResponseEntity<String> deleteOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
 
-        if (odontologo != null) {
-            odontologoService.deleteOdontologo(id);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-
+        odontologoService.deleteOdontologo(id);
+        return ResponseEntity.ok("Odontologo eliminado.");
     }
 
     @PutMapping("/modify/{id}")
-    public ResponseEntity<OdontologoDTO> modifyOdontologo(@PathVariable Long id, @RequestBody Odontologo odontologo) {
-        ResponseEntity<OdontologoDTO> response = null;
+    public ResponseEntity<String> modifyOdontologo(@PathVariable Long id, @RequestBody Odontologo odontologo) throws ResourceNotFoundException {
+
         Odontologo odontologoModificar = odontologoService.findById(id);
 
-        if (odontologoModificar != null){
-            odontologoService.modifyOdontologo(id, odontologo.getNombre(), odontologo.getApellido(), odontologo.getMatricula());
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        odontologoService.modifyOdontologo(id, odontologo.getNombre(), odontologo.getApellido(), odontologo.getMatricula());
 
+        return ResponseEntity.ok("El odontologo fue modificado exitosamente");
     }
+
+
 }

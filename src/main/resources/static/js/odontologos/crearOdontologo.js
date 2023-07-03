@@ -15,11 +15,13 @@ window.addEventListener('load', function () {
             matricula: formulario.querySelector('#matricula').value
         };
 
+        const token = localStorage.getItem('jwt');
         const url = '/odontologos/add';
         const settings = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Bareer' + token
             },
             body: JSON.stringify(formData)
         }

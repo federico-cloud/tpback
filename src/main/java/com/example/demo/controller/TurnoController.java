@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.PacienteDTO;
 import com.example.demo.dto.TurnoDTO;
+import com.example.demo.exceptions.ResourceCouldNotBeAdded;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.persistence.entities.Odontologo;
 import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.persistence.entities.Turno;
@@ -30,8 +31,8 @@ public class TurnoController {
     OdontologoService odontologoService;
 
     @GetMapping("/getAll")
-    public ResponseEntity <List<TurnoDTO>> getAll(){
-        ResponseEntity<PacienteDTO> response = null;
+    public ResponseEntity <List<TurnoDTO>> getAll() throws ResourceNotFoundException {
+
         ObjectMapper mapper = new ObjectMapper();
         List<Turno> turnos = turnoService.getAll();
         List<TurnoDTO> turnosDto = new ArrayList<>();
@@ -41,15 +42,11 @@ public class TurnoController {
             turnosDto.add(turnoDto);
         }
 
-        if (turnosDto.size() != 0){
-            return ResponseEntity.ok(turnosDto);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(turnosDto);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<TurnoDTO> addTurno(@RequestBody Turno turno){
+    public ResponseEntity<TurnoDTO> addTurno(@RequestBody Turno turno) throws ResourceCouldNotBeAdded {
 
         ResponseEntity<TurnoDTO> response = null;
         ObjectMapper mapper = new ObjectMapper();

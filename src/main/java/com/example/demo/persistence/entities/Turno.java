@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Data
 public class Turno {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;

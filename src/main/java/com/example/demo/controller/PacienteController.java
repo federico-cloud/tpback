@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.PacienteDTO;
+import com.example.demo.exceptions.ResourceCouldNotBeAdded;
+import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.service.PacienteService;
 import com.example.demo.util.Util;
@@ -21,9 +23,8 @@ public class PacienteController {
     PacienteService pacienteService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<PacienteDTO>> listAll(){
+    public ResponseEntity<List<PacienteDTO>> listAll() throws ResourceNotFoundException {
 
-        ResponseEntity<PacienteDTO> response = null;
         ObjectMapper mapper = new ObjectMapper();
         List<Paciente> pacientes = pacienteService.getAll();
         List<PacienteDTO> pacientesDto = new ArrayList<>();
@@ -33,11 +34,7 @@ public class PacienteController {
             pacientesDto.add(pacienteDto);
         }
 
-        if (pacientesDto.size() != 0){
-            return ResponseEntity.ok(pacientesDto);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(pacientesDto);
 
     }
 
@@ -59,8 +56,8 @@ public class PacienteController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<PacienteDTO> addPaciente(@RequestBody Paciente paciente){
-        ResponseEntity<PacienteDTO> response = null;
+    public ResponseEntity<PacienteDTO> addPaciente(@RequestBody Paciente paciente) throws ResourceCouldNotBeAdded {
+
         ObjectMapper mapper = new ObjectMapper();
 
         paciente.setFechaRegistro(Util.utilDateToSqlDate(Util.dateToTimestamp(new Date())));
@@ -73,34 +70,19 @@ public class PacienteController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<PacienteDTO> deletePaciente(@PathVariable Long id){
-        ResponseEntity<PacienteDTO> response = null;
-        ObjectMapper mapper = new ObjectMapper();
-        Paciente paciente = pacienteService.findById(id);
-
-        if (paciente != null) {
-            pacienteService.delete(id);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-
+    public ResponseEntity<String> deletePaciente(@PathVariable Long id) throws ResourceNotFoundException {
+        pacienteService.delete(id);
+        return ResponseEntity.ok("Paciente eliminado.");
     }
 
     @PutMapping("/modify/{id}")
-    public ResponseEntity<PacienteDTO> modify(@PathVariable Long id, @RequestBody Paciente paciente) {
-        ResponseEntity<PacienteDTO> response = null;
+    public ResponseEntity<String> modify(@PathVariable Long id, @RequestBody Paciente paciente) throws ResourceNotFoundException {
+
         Paciente pacienteModificar = pacienteService.findById(id);
-        PacienteDTO pacienteDto = null;
 
-        if(pacienteModificar != null){
-            pacienteService.modify(id, paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getDomicilio());
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-        
+        pacienteService.modify(id, paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getDomicilio());
+
+        return ResponseEntity.ok("El paciente fue modificado exitosamente");
+
     }
-
-
 }
