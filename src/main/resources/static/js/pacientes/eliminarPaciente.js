@@ -1,31 +1,15 @@
-window.addEventListener('load', function () {
+import { showAlert } from '../util/showAlert.js';
+import { validarJwt } from '../util/validarJwt.js';
+
+validarJwt();
+
+window.addEventListener('load', () => {
 
     const formulario = document.querySelector('#eliminarP');
     const id = formulario.querySelector("#id");
     
     const resetUploadForm = () => {
         id.value = "";
-    }
-
-    const showAlert = (status) => {
-
-        status === 200 ? (
-            Swal.fire({
-                icon: 'success',
-                title: 'Tarea completada',
-                text: 'El paciente fue eliminado exitosamente',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        ):(
-            Swal.fire({
-                icon: 'error',
-                title: 'ERROR',
-                text: 'Posiblemente el paciente que esta intentando eliminar posee un turno vigente.',
-                showConfirmButton: false,
-                timer: 4000
-            })
-        );
     }
 
     const eliminarPaciente = async(id) => {
@@ -44,7 +28,7 @@ window.addEventListener('load', function () {
         return resp;
     }
 
-    formulario.addEventListener('submit', function (event) {
+    formulario.addEventListener('submit', (event) => {
 
         const id = formulario.querySelector('#id').value;
         event.preventDefault();

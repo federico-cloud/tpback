@@ -1,4 +1,8 @@
-window.addEventListener('load', function () {
+import { validarJwt } from "../util/validarJwt";
+
+validarJwt();
+
+window.addEventListener('load', () => {
 
     const botonListar = document.querySelector('#listar');
     const turnosTable = document.querySelector('table#turnos-table tbody');

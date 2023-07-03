@@ -1,4 +1,8 @@
-window.addEventListener('load', function () {
+import { validarJwt } from "../util/validarJwt";
+
+validarJwt();
+
+window.addEventListener('load', () => {
 
     const botonListar = document.querySelector('#listar');
     const pacientesTable = document.querySelector('table#pacientes-table tbody');

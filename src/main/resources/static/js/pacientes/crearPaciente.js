@@ -1,3 +1,8 @@
+import { showAlert } from '../util/showAlert.js';
+import { validarJwt } from '../util/validarJwt.js';
+
+validarJwt();
+
 window.addEventListener('load', function () {
     
     const formulario = document.querySelector('#add_new_paciente');
@@ -40,27 +45,6 @@ window.addEventListener('load', function () {
         const data = await resp.json();
 
         return data;
-    }
-
-    const showAlert = (status) => {
-
-        status === 200 ? (
-            Swal.fire({
-                icon: 'success',
-                title: 'Tarea completada',
-                text: 'El paciente fue generado extiosamente',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        ):(
-            Swal.fire({
-                icon: 'error',
-                title: 'ERROR',
-                text: 'Hubo un error al crear el paciente',
-                showConfirmButton: false,
-                timer: 4000
-            })
-        );
     }
 
     formulario.addEventListener('submit', (event) => {

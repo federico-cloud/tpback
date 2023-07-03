@@ -1,3 +1,7 @@
+import { validarJwt } from "../util/validarJwt";
+
+validarJwt();
+
 window.addEventListener('load', function () {
 
     const botonListar = document.querySelector('#listar');

@@ -1,27 +1,11 @@
-window.addEventListener('load', function () {
+import { showAlert } from '../util/showAlert.js';
+import { validarJwt } from '../util/validarJwt.js';
+
+validarJwt();
+
+window.addEventListener('load', () => {
 
   const formulario  = document.querySelector('#modify_pacient');
-
-  const showAlert = (status) => {
-
-    status === 200 ? (
-      Swal.fire({
-        icon: 'success',
-        title: 'Tarea completada',
-        text: 'El paciente fue modificado exitosamente.',
-        showConfirmButton: false,
-        timer: 2000
-      })
-    ) : (
-      Swal.fire({
-        icon: 'error',
-        title: 'ERROR',
-        text: 'Hubo un error al modificar el paciente.',
-        showConfirmButton: false,
-        timer: 4000
-      })
-    );
-  }
 
   const modificarPaciente = async (id) => {
 

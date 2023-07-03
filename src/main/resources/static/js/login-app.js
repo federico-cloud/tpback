@@ -1,81 +1,63 @@
-const apiUrl = 'http://localhost:8080/authenticate';
 
-window.addEventListener('load', function(){
-    console.log("Entramos en el EventListener");
+window.addEventListener('load', () => {
+    const apiUrl = 'http://localhost:8080/authenticate';
 
-    const formulario =  this.document.forms[0];
+    const formulario = document.querySelector('form.loginRegistry');
+    const email      = formulario.querySelector('#email');
+    const password   = formulario.querySelector('#password');
 
-    const inputEmail = this.document.querySelector('#email');
+    const validacionNoVacio = (texto) => {
+        let resultado = true;
+    
+        if(texto === ""){
+            resultado = false;
+        }
+    
+        return resultado
+    }
+    
+    const normalizacionLogin = (email, password) => {
+        const usuario = {
+            email: email.trim(),
+            password: password.trim()
+        }
+    
+        return usuario;
+    }
 
-    const inputPassword =  this.document.querySelector('#password');
+    const fetchApiLogin = async(url,payload) => {
 
-    formulario.addEventListener('submit', function(event){
+        const settings = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify(payload)
+        }
+
+        const resp = await fetch(url, settings);
+        const data = await resp.json();
+        const jwt = data.jwt;
+
+        if(jwt){
+            localStorage.setItem('jwt', data.jwt);
+            location.href = '/bienvenido.html';
+        }
+    }
+
+    formulario.addEventListener('submit', (event) => {
+
         event.preventDefault();
-
-        const validacion = validacionNoVacio(inputEmail.value) && validacionNoVacio(inputPassword.value);
+        const validacion = validacionNoVacio(email.value) && validacionNoVacio(password.value);
 
         if(validacion){
-            console.log("Entramos en validación");
-            const datosUsuario = normalizacionLogin(inputEmail.value, inputPassword.value);
-            console.log(datosUsuario);
-
+            const datosUsuario = normalizacionLogin(email.value, password.value);
             fetchApiLogin(apiUrl, datosUsuario);
         }else{
-
             console.log("algun dato no es correcto");
         }
         formulario.reset();
-    });
-});
-
-function validacionNoVacio(texto) {
-    let resultado = true;
-
-    if(texto === ""){
-        resultado = false;
-    }
-
-    return resultado
-}
-
-function normalizacionLogin(email, password) {
-    const usuario = {
-        email: email.trim(),
-        password: password.trim()
-
-    }
-
-    return usuario;
-}
-
-function fetchApiLogin(url,payload) {
-
-    const configuraciones = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify(payload)
-    }
-
-    fetch(url, configuraciones)
-    .then( respuesta => {
-        console.log("las configuraciones son: ");
-        console.log(configuraciones);
-        console.log(respuesta);
-        return respuesta.json()
     })
-    .then( data => {
-        console.log(data);
-        console.log(data.jwt);
-        //si llega correctamente un token
-        console.log("TOKEN desde login.js: ", data.jwt);
-        //console.log(data.jwt);
-        if(data.jwt){
-            localStorage.setItem('jwt', data.jwt);
 
-            location.href = '/bienvenido.html'
-        }
-    }).catch( error => console.log(error))
-   }
+});
