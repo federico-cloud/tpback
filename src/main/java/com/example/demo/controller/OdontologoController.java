@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.OdontologoDTO;
-import com.example.demo.dto.PacienteDTO;
 import com.example.demo.persistence.entities.Odontologo;
 import com.example.demo.service.OdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,7 +43,7 @@ public class OdontologoController {
     @GetMapping("/search/{id}")
     public ResponseEntity<OdontologoDTO> searchById(@PathVariable Long id){
 
-        ResponseEntity<PacienteDTO> response = null;
+        ResponseEntity<OdontologoDTO> response = null;
         ObjectMapper mapper = new ObjectMapper();
         Odontologo odontologo = odontologoService.findById(id);
         OdontologoDTO odontologoDto = null;
