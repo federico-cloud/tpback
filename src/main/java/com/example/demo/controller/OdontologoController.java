@@ -1,18 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.OdontologoDTO;
-<<<<<<< HEAD
-=======
-import com.example.demo.dto.PacienteDTO;
 import com.example.demo.exceptions.ResourceCouldNotBeAdded;
 import com.example.demo.exceptions.ResourceNotFoundException;
->>>>>>> 48e204ef5bb5e26ebc33fa3390323d84afc2dbe0
 import com.example.demo.persistence.entities.Odontologo;
-import com.example.demo.persistence.entities.Paciente;
 import com.example.demo.service.OdontologoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
