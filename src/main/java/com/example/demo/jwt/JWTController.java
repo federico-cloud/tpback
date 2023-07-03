@@ -27,7 +27,7 @@ public class JWTController {
 
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AppUser appUser) throws Exception{
+    public ResponseEntity<AuthenticationResponse> createAuthenticationToken(@RequestBody AppUser appUser) throws Exception{
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(appUser.getEmail(), appUser.getPassword()));
         }catch (BadCredentialsException e) {
@@ -38,4 +38,6 @@ public class JWTController {
 
         return ResponseEntity.ok(new AuthenticationResponse((jwt)));
     }
+
+
 }
