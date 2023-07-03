@@ -11,6 +11,9 @@ import java.util.Set;
 @Data
 public class Odontologo {
 
+    public Odontologo() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -23,5 +26,7 @@ public class Odontologo {
     @JsonIgnore
     @Column(name = "turno_id")
     private Set <Turno> turnos = new HashSet<>();
+
+
 
 }
