@@ -1,9 +1,12 @@
-import { validarJwt } from "../util/validarJwt";
-
-validarJwt();
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+    location.replace('/');
+}
 
 window.addEventListener('load', () => {
-
+    
     const botonListar = document.querySelector('#listar');
     const pacientesTable = document.querySelector('table#pacientes-table tbody');
 

@@ -1,15 +1,13 @@
-import { validarJwt } from "./util/validarJwt";
-
-validarJwt();
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+  location.replace('/');
+}
 
 const apiBaseUrl = 'http://localhost:8080';
 
 window.addEventListener('load', () => {
-
-  /* -------------------------------------------------------------------------- */
-  /*                             logica de la vista                             */
-  /* -------------------------------------------------------------------------- */
-  const jwt = localStorage.getItem('jwt')
 
   const btnCerrar = document.querySelector('#closeApp');
 
@@ -32,4 +30,4 @@ window.addEventListener('load', () => {
       }
     })
   })
- });
+});

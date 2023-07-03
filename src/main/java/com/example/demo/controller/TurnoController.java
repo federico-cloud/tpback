@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -54,7 +53,7 @@ public class TurnoController {
         Paciente paciente = pacienteService.findById(turno.getPaciente().getId());
         Odontologo odontologo = odontologoService.findById(turno.getOdontologo().getId());
 
-        turno.setFechaYHora(Util.utilDateToSqlDate(new Date()));
+        turno.setFechaYHora(Util.utilDateToSqlDate(turno.getFechaYHora()));
         turno.setPaciente(paciente);
         turno.setOdontologo(odontologo);
 

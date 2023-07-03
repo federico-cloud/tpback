@@ -1,5 +1,6 @@
 package com.example.demo.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Odontologo {
     private String matricula;
 
     @OneToMany(mappedBy = "odontologo")
+    @JsonIgnore
     @Column(name = "turno_id")
     private Set <Turno> turnos = new HashSet<>();
 

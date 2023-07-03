@@ -1,11 +1,33 @@
-import { showAlert } from '../util/showAlert.js';
-import { validarJwt } from '../util/validarJwt.js';
-
-validarJwt();
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+    location.replace('/');
+}
 
 window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#modify_odontologo');
+
+    const showAlert = (status) => {
+        status === 200 ? (
+            Swal.fire({
+                icon: 'success',
+                title: 'Tarea completada',
+                text: 'El odontologo fue modificado extiosamente.',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        ):(
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'Hubo un error al moidificar a el odontologo.',
+                showConfirmButton: false,
+                timer: 4000
+            })
+        );
+    }
 
     const modificarOdontologo = async(id) => {
 
@@ -42,6 +64,7 @@ window.addEventListener('load', function () {
         event.preventDefault();
         const id = formulario.querySelector('#id').value;
         modificarOdontologo(id);
+        formulario.reset();
 
     });
 

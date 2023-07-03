@@ -1,15 +1,33 @@
-import { showAlert } from '../util/showAlert.js';
-import { validarJwt } from '../util/validarJwt.js';
-
-validarJwt();
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+    location.replace('/');
+}
 
 window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#delete_odontologo');
     const id = formulario.querySelector("#id");
     
-    const resetUploadForm = () => {
-        id.value = "";
+    const showAlert = (status) => {
+        status === 200 ? (
+            Swal.fire({
+                icon: 'success',
+                title: 'Tarea completada',
+                text: 'El odontologo fue eliminado extiosamente.',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        ):(
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'Hubo un error al eliminar a el odontologo.',
+                showConfirmButton: false,
+                timer: 4000
+            })
+        );
     }
 
     const eliminarOdontologo = async(id) => {
@@ -33,7 +51,7 @@ window.addEventListener('load', function () {
         const id = formulario.querySelector('#id').value;
         event.preventDefault();
         eliminarOdontologo(id);
-        resetUploadForm();
+        formulario.reset();
 
     });
 })

@@ -1,11 +1,32 @@
-import { showAlert } from '../util/showAlert.js';
-import { validarJwt } from '../util/validarJwt.js';
-
-validarJwt();
-
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+    location.replace('/');
+}
 window.addEventListener('load', () => {
 
   const formulario  = document.querySelector('#modify_pacient');
+
+  const showAlert = (status) => {
+    status === 200 ? (
+        Swal.fire({
+            icon: 'success',
+            title: 'Tarea completada',
+            text: 'El paciente fue modificado extiosamente.',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    ):(
+        Swal.fire({
+            icon: 'error',
+            title: 'ERROR',
+            text: 'Hubo un error al modificar a el paciente.',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    );
+}
 
   const modificarPaciente = async (id) => {
 
@@ -51,6 +72,7 @@ window.addEventListener('load', () => {
     const id = formulario.querySelector('#id').value;
     event.preventDefault();
     modificarPaciente(id);
+    formulario.reset();
 
   });
 

@@ -1,16 +1,32 @@
-import { showAlert } from '../util/showAlert.js';
-import { validarJwt } from '../util/validarJwt.js';
-
-validarJwt();
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+    location.replace('/');
+}
 
 window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#add_new_odontologo');
 
-    const resetUploadForm = () => {
-        formulario.querySelector('#nombre').value = "";
-        formulario.querySelector('#apellido').value = "";
-        formulario.querySelector('#matricula').value = "";
+    const showAlert = (status) => {
+        status === 200 ? (
+            Swal.fire({
+                icon: 'success',
+                title: 'Tarea completada',
+                text: 'El odontologo fue generado extiosamente.',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        ):(
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'Hubo un error al crear a el odontologo.',
+                showConfirmButton: false,
+                timer: 4000
+            })
+        );
     }
 
     const crearOdontologo = async() => {
@@ -42,7 +58,7 @@ window.addEventListener('load', function () {
 
         event.preventDefault();
         crearOdontologo();
-        resetUploadForm();
+        formulario.reset();
 
     });
 

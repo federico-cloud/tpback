@@ -1,20 +1,32 @@
-import { showAlert } from '../util/showAlert.js';
-import { validarJwt } from '../util/validarJwt.js';
+// chequear que exista un usuario loggeado
+const jwt = localStorage.getItem('jwt');
+// si no existe un token, lo sacamos de la vista
+if (!jwt) {
+    location.replace('/');
+}
 
-validarJwt();
-
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
     
     const formulario = document.querySelector('#add_new_paciente');
     
-    function resetUploadForm() {
-        formulario.querySelector('#nombre').value = '';
-        formulario.querySelector('#apellido').value = '';
-        formulario.querySelector('#dni').value = '';
-        formulario.querySelector('#calle').value = '';
-        formulario.querySelector('#numero').value = '';
-        formulario.querySelector('#localidad').value = '';
-        formulario.querySelector('#provincia').value = '';
+    const showAlert = (status) => {
+        status === 200 ? (
+            Swal.fire({
+                icon: 'success',
+                title: 'Tarea completada',
+                text: 'El paciente fue generado extiosamente.',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        ):(
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'Hubo un error al eliminar a el paciente.',
+                showConfirmButton: false,
+                timer: 4000
+            })
+        );
     }
     
     const crearPaciente = async() => {
@@ -52,6 +64,7 @@ window.addEventListener('load', function () {
         event.preventDefault();
         crearPaciente();
         resetUploadForm();
+        formulario.reset();
 
     });
 
